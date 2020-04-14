@@ -14,10 +14,8 @@ import CartContext from '../../contexts/cart/cart.context'
 import './header.styles.scss';
 
 const Header = () => {
-
-  const currentUser = useContext({CurrentUserContext})
-  const [hidden, setHidden] = useState(true);
-  const toggleHidden = () => setHidden(!hidden);
+    const currentUser = useContext(CurrentUserContext);
+    const {hidden} = useContext(CartContext);
 return (
   <div className='header'>
     <Link className='logo-container' to='/'>
@@ -39,9 +37,7 @@ return (
           SIGN IN
         </Link>
       )}
-      <CartContext.Provider value={{hidden,toggleHidden}}>
       <CartIcon />
-      </CartContext.Provider>
     </div>
     {hidden ? null : <CartDropdown />}
   </div>
